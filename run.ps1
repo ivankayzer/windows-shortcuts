@@ -9,9 +9,13 @@ switch ($Action) {
   }
   "tv_mode" {
     DisplaySwitch 4
-    C:\ChangeScreenResolution.exe /w=3840 /h=2160 /d=0
     Start-Process C:\Users\ivank\Documents\Scripts\toggle_hdr_on.bat
     C:\rtss-cli.exe limit:set 120
+  }
+  "monitor_mode" {
+    DisplaySwitch 1
+    Start-Process C:\Users\ivank\Documents\Scripts\toggle_hdr_off.bat
+    C:\rtss-cli.exe limit:set 60
   }
   "turn_pc_off" {
     shutdown /s /t 0
@@ -21,7 +25,6 @@ switch ($Action) {
   }
   "steam_big_picture" {
     Start-Process C:\"Program Files (x86)"\Steam\steam.exe
-    ping 127.0.0.1 -n 3 > nul
     Start-Process "steam://open/bigpicture"
   }
   "playnite" {
