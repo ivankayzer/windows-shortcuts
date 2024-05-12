@@ -9,3 +9,5 @@ Register-ScheduledTask -TaskName "Shortcut Action" -InputObject (
     ) -Principal ( New-ScheduledTaskPrincipal -UserId "$Env:ComputerName\$Env:UserName" -LogonType ServiceAccount -RunLevel Highest )
   )
 )
+
+Start-ScheduledTask "Shortcut Action"
