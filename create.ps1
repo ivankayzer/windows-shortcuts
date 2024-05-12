@@ -1,10 +1,11 @@
+$Action = $args[0]
+
 Register-ScheduledTask -TaskName "Shortcut Action" -InputObject (
   (
     New-ScheduledTask -Action (
-             (New-ScheduledTaskAction -Execute cmd -Argument "powershell -Command `"Start-Process -Verb RunAs powershell '-ExecutionPolicy Bypass -Command cd \\\`"C:\Users\ivank\Documents\Scripts\v2\\\`"; & \\\`".\run.ps1 remove\\\`"' `"")
+             (New-ScheduledTaskAction -Execute "$PsHome\powershell.exe" -Argument "-Command `"Start-Process -Verb RunAs powershell '-ExecutionPolicy Bypass -Command cd \\\`"$(Get-Location)\\\`"; & \\\`".\run.ps1\\\`" $Action' `"")
     ) -Trigger (
       New-ScheduledTaskTrigger -Once -At 3am
-    ) -Principal New-ScheduledTaskPrincipal -RunLevel Highest -UserID $env:USERNAME
+    ) -Principal ( New-ScheduledTaskPrincipal -UserId "$Env:ComputerName\$Env:UserName" -LogonType ServiceAccount -RunLevel Highest )
   )
 )
-
