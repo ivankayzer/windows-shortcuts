@@ -1,1 +1,0 @@
-Write-Output $args[0] | Out-File -FilePath "$(Get-Location)\queue.txt"
