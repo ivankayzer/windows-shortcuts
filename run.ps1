@@ -21,6 +21,9 @@ switch ($Action) {
     shutdown /s /t 0
   }
   "toggle_capframe" {
+    Stop-Process -name "CapFrameX" -ErrorAction SilentlyContinue
+    Start-Process "C:\Program Files (x86)\CapFrameX\CapFrameX.exe"
+    Start-Sleep -Seconds 3
     Start-Process C:\Users\ivank\Documents\Scripts\f1.exe
   }
   "steam_big_picture" {
