@@ -54,7 +54,7 @@ Function Run {
       Start-Process "steam://open/bigpicture"
     }
     "playnite" {
-      Start-Process C:\Users\ivank\AppData\Local\Playnite\Playnite.toDesktopApp.exe
+      Start-Process -FilePath "C:\Users\ivank\AppData\Local\Playnite\Playnite.DesktopApp.exe"
     }
     "playnite_fs" {
       Start-Process -FilePath "C:\Users\ivank\AppData\Local\Playnite\Playnite.DesktopApp.exe" -ArgumentList "--startfullscreen"
