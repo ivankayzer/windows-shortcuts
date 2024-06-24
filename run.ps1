@@ -1,4 +1,4 @@
-$Action = $args[0]
+$actions = $args[0].Split(",")
 
 Function Run {
   param($action)
@@ -64,6 +64,9 @@ Function Run {
   Unregister-ScheduledTask -TaskName "Shortcut Action" -Confirm:$false -ErrorAction SilentlyContinue
 }
 
-Run $Action
+foreach ($action in $actions) {
+  Run $action
+}
+
 
 
