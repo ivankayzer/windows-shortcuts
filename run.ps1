@@ -9,12 +9,11 @@ Function Run {
   }
 
   Function Resolution4k {
-    param($index)
-    C:\ChangeScreenResolution.exe /w=3840 /h=2160 /d=$index
+    C:\ChangeScreenResolution.exe /w=3840 /h=2160
   }
 
   Function Resolution800p {
-    C:\ChangeScreenResolution.exe /w=1920 /h=1200 /d=0
+    C:\ChangeScreenResolution.exe /w=1920 /h=1200
   }
 
   switch ($action) {
@@ -26,16 +25,16 @@ Function Run {
       C:\nircmd.exe win close title "Steam Big Picture Mode"
     }
     "tv_mode" {
+	  Resolution4k
       DisplaySwitch 4
       Start-Process C:\Users\ivank\Documents\Scripts\toggle_hdr_on.bat
       Run "120hz"
-      Resolution4k 1
     }
     "monitor_mode" {
+      Resolution4k
       DisplaySwitch 1
       Start-Process C:\Users\ivank\Documents\Scripts\toggle_hdr_off.bat
       Run "60hz"
-      Resolution4k 0
     }
     "steam_deck_mode" {
       Run "monitor_mode"
